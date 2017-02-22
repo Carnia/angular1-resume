@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id='c1'></canvas>
+<script>
+    var cas = document.querySelector('#c1');
+    var ctx = cas.getContext('2d');
+    cas.width = window.innerWidth,
+    cas.height = window.innerHeight
+    //三个方法声明
+    //度数转换弧度
+    function getRadion(deg){
+        return deg/180*Math.PI;
+    }
+    //随机颜色1(偏黄红)
+    function randomColor() {
+        return 'rgb(255,'+(parseInt(90*Math.random()))+','+parseInt(255*Math.random())+')';
+    }
+    //随机颜色2(偏黄红)
+    function randomColor2() {
+        return 'rgb(255,'+parseInt(255*Math.random())+','+parseInt(255*Math.random())+')';
+    }
+    //初始位置、大小和颜色(眼睛是0.1倍半径)
+    var x=100;
+    var y=100;
+    var w=50;
+    var color='yellow';
+    var color2='hotpink';
+    var color3='white';
+    //控制移动速度
+    var xStep=6;
+    var yStep=5;
+    //初始移动方向
+    var xD=1;
+    var yD=1;
+    //闭嘴参数
+    var deg0=40;//初始嘴的张度
+    var oDeg=0;//累加的嘴张度
+    var step=1;
+    var oD=1;
+    //自动转向参数
+    var rDeg=0;//初始旋转度数
+    var rStep=4;//每次旋转多少度
+    var dD=1;
+    //碰撞次数
+    var count=0;//总碰撞次数
+    var N=3;//多少次改变一次自转
+    var flag=false;//是否改变自转标识
+    var g;
+    //动画开始
+    var timer=setInterval(function() {
+        ctx.clearRect(x-1.1*(xStep+w),y-1.1*(yStep+w),2.2*(w+xStep),2.2*(w+yStep));
+        //ctx.clearRect(0,0,cas.width,cas.height);没有使用清全屏
+        //碰撞改变运动方向、累加碰撞次数
+        if(x>cas.width-w){
+            x=cas.width-w;
+            xD=-xD;
+            count++;
+            if(count%N==0){
+                flag=true;
+            }
+        }
+        if (x<w){
+            x=w;
+            xD=-xD;
+            count++;
+            if(count%N==0){
+                flag=true;
+            }
+        }
+        if(y>cas.height-w){
+            y=cas.height-w;
+            yD=-yD;
+            count++;
+            if(count%N==0){
+                flag=true;
+            }
+        }
+        if(y<w){
+            y=w;
+            yD=-yD;
+            count++;
+            if(count%N==0){
+                flag=true;
+            }
+        }
+        //闭嘴方向判断
+        if(oDeg>deg0){
+            oDeg=deg0;
+            oD=-oD;
+        }
+        if(oDeg<0){
+            oDeg=0;
+            oD=-oD;
+        }
+        //脸的绘制
+        ctx.beginPath();
+//        ctx.fillStyle=color;
+        //碰撞N次自转方向变一次，并且改变颜色
+        if(flag){
+            dD=-dD;
+            flag=false;
+            color=randomColor();
+            color2=randomColor2();
+            // color3=randomColor2();
+        }
+        if (rDeg>360||rDeg<-360){//数字太大不好看
+            rDeg=0;
+        }
+        ctx.moveTo(x,y);
+        g = ctx.createRadialGradient( x + w * 2 / 3, y - w * 2 / 3, 0, x + w / 3, y - w / 3, w * 4 / 3 );
+        g.addColorStop( 0, color3 );
+        g.addColorStop( 1, color );
+        ctx.fillStyle = g;
+        ctx.arc(x,y,w,getRadion(deg0-oDeg+rDeg),getRadion(-deg0+oDeg+rDeg));//弧度根据嘴张度变化
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        //眼睛绘制
+        ctx.beginPath();
+        ctx.arc(x+w/2*Math.sin(getRadion(rDeg)),y-w/2*Math.cos(getRadion(rDeg)),w/10,-Math.PI,Math.PI);
+        ctx.fillStyle=color2;
+        ctx.fill();
+        //下一次闭嘴度数增加
+        oDeg=oDeg+step*oD;
+        //下一次圆心位置变化
+        x=x+xStep*xD;
+        y=y+yStep*yD;
+        //下一次自旋转度数增加
+        rDeg=rDeg+rStep*dD;
+    },17)
+</script>
+</body>
+</html>

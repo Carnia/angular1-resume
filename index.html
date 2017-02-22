@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口标签 -->
+    <meta name="viewport" content='width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0'>
+    <title>Document</title>
+    <link rel="stylesheet" href="public/css/index.css">
+    <!-- 引入核心框架 -->
+    <script src="./libs/angular.min.js"></script>
+    <!-- 引入路由模块 -->
+    <script src="./libs/angular-route.js"></script>
+   	<!-- 引入js -->
+    <script src='scripts/app.js'></script>
+    <script src='scripts/controller.js'></script>
+</head>
+
+<body>
+    <div class="viewport" ng-app='App'>
+        <!-- 侧边导航 -->
+        <div ng-class='{navs:true,collapse:collapsed}' ng-controller='NavsController' >
+			<dl>
+				<dd ng-class="{active:$index==current}" ng-repeat='nav in navs' ng-click='toggle(nav.text)'>
+					<a href={{nav.link}} class={{nav.icon}}>
+						<span>{{nav.text}}</span>
+					</a>
+				</dd>
+			</dl>
+		</div>
+        <!-- 主体 -->
+        <div class="container clearfix">
+            <!-- 头部 -->
+            <header ng-class="{header: true, collapse: collapsed}">
+                <a class="menu fl icon-menu" href='javascript:;' ng-click='toggle()'></a>
+                <a class="search fr icon-search" href='javascript:;'></a>
+                <h1>{{title}}</h1>
+            </header>
+            <!-- 主体 -->
+            <div ng-class='{body:true,collapse:collapsed}'>
+				<img ng-hide='loaded' class="loading" src="public/images/loading.gif" alt="">
+				<div ng-view ng-show='loaded'></div>
+			</div>
+        </div>
+    </div>
+</body>
+
+</html>
