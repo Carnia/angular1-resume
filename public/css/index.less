@@ -26,46 +26,39 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-home:before {
-    content: "\e901";
+.icon-newspaper:before {
+  content: "\e904";
+  background-color: #62c98d;
 }
-
-.icon-pencil:before {
-    content: "\e905";
+.icon-user:before {
+  content: "\e971";
+  background-color: #46c8ce;
 }
-
-.icon-image:before {
-    content: "\e90d";
+.icon-loading:before {
+  content: "\e97c";
+  color: #fdcc65;
 }
-
-.icon-file-empty:before {
-    content: "\e924";
-}
-
-.icon-bell:before {
-    content: "\e951";
-}
-
 .icon-search:before {
-    content: "\e986";
+  content: "\e986";
 }
-
-.icon-cog:before {
-    content: "\e994";
-}
-
 .icon-menu:before {
-    content: "\e9bd";
+  content: "\e9bd";
 }
-
-.icon-download:before {
-    content: "\e9c7";
+.icon-mail4:before {
+  content: "\ea86";
+background-color: #eb9d58;
 }
-
-.icon-heart:before {
-    content: "\e9da";
+.icon-github:before {
+  content: "\eab0";
 }
-
+.icon-html-five2:before {
+  content: "\eae5";
+background-color: #5293d0;
+}
+.icon-css3:before {
+  content: "\eae6";
+  background-color: #ff7777;
+}
 // 导航
 .navs {
     width: @hl;
@@ -80,10 +73,11 @@
         padding: @hl/10 0;
         margin: @hl/10 0;
         transform: translate(-100%);
-        text-align: center;
+        text-align: left;
         a {
             font-size: @hl/10;
             color: #FFF;
+            padding-left: 5%;
         }
         a[class^="icon"]:before {
             display: inline-block;
@@ -92,27 +86,9 @@
             line-height: @hl/5;
             text-align: center;
             border-radius: 50%;
-            font-size: @hl/5;
+            font-size: @hl/6;
             position: relative;
-            top: -2px;
-        }
-        .icon-home:before {
-            background-color: #46c8ce;
-        }
-        .icon-file-empty:before {
-            background-color: #62c98d;
-        }
-        .icon-pencil:before {
-            background-color: #eb9d58;
-        }
-        .icon-menu:before {
-            background-color: #5293d0;
-        }
-        .icon-heart:before {
-            background-color: #ff7777;
-        }
-        .icon-cog:before {
-            background-color: #fdcc65;
+            top: 6px;
         }
         span {
             color: #1a1a1a;
@@ -128,7 +104,41 @@
 .collapse {
     transform: translate(@hl);
 }
-
+.loading{
+    margin-top: 70px;
+    display: block;
+    
+}
+.loading:before{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 40px;
+    position: relative;
+    // top: 10px;
+    left:50%;
+    margin-left: -20px;
+  animation:circle 1s infinite;
+}
+@keyframes circle{
+    0%{
+        -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+    }
+}
 // 视图
 .viewport {
     max-width: 640px;
@@ -143,6 +153,7 @@
             z-index: 999;
             top: 0;
             height: @hh;
+            border-bottom: 1px solid #EEEEEE;
             width: 100%;
             min-width: 320px;
             max-width: 640px;
@@ -164,28 +175,36 @@
         }
         .body {
             transition: all @t 0.1s;
-            .loading {
-                width: 20%;
-                margin: 0 auto;
-            }
         }
     }
-    .course {
+    .jianjie {
         width: 100%;
-        height: 150px;
-        background-color: skyblue;
+        background-color: #F8F8F8;
+        text-align: center;
+        border-radius:5%;
+        h1{
+            font-size:20px;
+        }
+        p{
+            font-size:16px;
+        }
     }
     .tab {
         height: @hh+10px;
         line-height: @hh+10px;
         width: 100%;
-        background-color: orange;
+        display: flex;
+        border-top:1px solid #ccc;
+        border-bottom:1px solid #ccc;
         span {
+            flex:1;
             display: inline-block;
-            width: 25%;
-            float: left;
             text-align: center;
             font-size: 16px;
+            border-radius:5%;
+        }
+        .active{
+            background-color: skyblue;
         }
     }
     .content {
@@ -194,8 +213,14 @@
         box-sizing: border-box;
         .main {
             width: 100%;
-            height: 100px;
-            background-color: hotpink;
+            font-size:16px;
+            background-color: #FFFFFF;
+            ul{
+                padding-left: 5%;
+            }
+            li{
+                padding-top: 5px;
+            }
         }
     }
 }

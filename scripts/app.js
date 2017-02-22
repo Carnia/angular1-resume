@@ -1,7 +1,7 @@
 var App = angular.module('App', ['ngRoute', 'Ctrl']);
 App.run(['$rootScope', function($rootScope) {
     $rootScope.collapsed = false;
-    $rootScope.title = "Danny's Demo";
+    $rootScope.title = "Danny's resume";
     $rootScope.loaded = false;
     $rootScope.current = 0;
     $rootScope.toggle = function(text) {
@@ -39,12 +39,12 @@ App.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/index', {
         templateUrl: './views/index.html',
         controller: 'indexCtrl'
-    }).when('/lianzai', {
-        templateUrl: './views/lianzai.html',
-        controller: 'lianzaiCtrl'
-    }).when('/zhuanti', {
-        templateUrl: './views/zhuanti.html',
-        controller: 'zhuantiCtrl'
+    }).when('/h5c3', {
+        templateUrl: './views/h5c3.html',
+        controller: 'h5c3Ctrl'
+    }).when('/popular', {
+        templateUrl: './views/popular.html',
+        controller: 'popularCtrl'
     }).when('/about', {
         templateUrl: './views/about.html',
         controller: 'aboutCtrl'

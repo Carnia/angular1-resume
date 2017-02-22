@@ -1,12 +1,62 @@
-<div class="course">
+<div class="jianjie">
+	<h1>姓名：李强</h1>
+	<p>籍贯：湖南岳阳</p>
+	<p>年龄：24</p>
 </div>
-<div class="tab">
-    <span>demo1</span>
-    <span>demo2</span>
-    <span>demo3</span>
-    <span>demo4</span>
-</div>
+<nav class="tab">
+<span ng-repeat="demo in demos" ng-click='change($index)' ng-class='{active:$index==index}'>{{demo.text}}</span>
+</nav>
 <div class="content">
     <div class="main">
+    <section ng-show='index==0'>
+    	<h2>2015年于上海永灿信息科技有限公司担任web前端开发工程师(现已离职)</h2>
+    	<ul>
+    		<li>主要负责页面切图，HTML、CSS编写及各浏览器的兼容</li>
+    		<li>负责js的编写，以及jQuery的页面实现。</li>
+    		<li>负责ajax进行前后台的交互</li>
+    		<li>使用响应式布局的媒体查询可以适应各种设备。</li>
+    		<li>使用nodejs作后台接口进行测试。</li>
+    		<li>Angular、vue、nodejs技术研究和新技术调研</li>
+    	</ul>
+    </section>
+	<section ng-show='index==1'>
+    	<h2>2015年毕业于<span style='color:green'>华中农业大学</span>理学院</h2>
+    	<ul>
+    		<li>在校期间自学过java和网页制作</li>
+    		<li>熟练掌握jquery，封装过简单的jquery</li>
+    	</ul>
+    </section>
+    <section ng-show='index==2'>
+    	<h2>HTML/CSS/Javascript</h2>
+    	<ul>
+    		<li>熟练掌握HTML/CSS、H5、CSS3，了解ES6</li>
+    		<li>熟练原生javascript，深入理解闭包，原型，oop</li>
+    		<li>熟练应用H5/CSS3新特性，会使用canvas进行简单动画绘制</li>
+    		<li>熟练使用ajax进行前后端数据异步交互</li>
+    	</ul>
+    	<h2>类库/插件/框架</h2>
+    	<ul>
+    		<li>熟练使用JQuery库进行PC端行为层开发，熟练使用zepto库</li>
+    		<li>了解echarts、lazyload、swiper、validate等常见插件</li>
+    		<li>熟悉bootstrap框架，进行响应式布局开发</li>
+    		<li>熟悉Angular2、了解Vue2等MVC、MVVM等开发模式</li>
+    	</ul>
+    	<h2>工具/其他</h2>
+    	<ul>
+    		<li>会使用RquireJS、了解SeaJS</li>
+    		<li>熟悉Node.js,express框架</li>
+    		<li>了解php，能简单阅读代码</li>
+    		<li>开发工具：git、less、Gulp、Webpack、npm</li>
+    	</ul>
+    </section>
+    <section ng-show='index==3'>
+    	<h2>我的爱好</h2>
+    	<ul>
+    		<li>运动：篮球、乒乓、羽毛球</li>
+    		<li>娱乐：电影、音乐是必须的</li>
+    		<li>偶尔看书：除了IT，对物理、哲学都感兴趣</li>
+    		<li>捣腾硬件：组装电脑、给手机换屏这种事不是没干过</li>
+    	</ul>
+    </section>
     </div>
 </div>

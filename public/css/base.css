@@ -39,7 +39,7 @@ body, div, ul, li, ol, h1, h2, h3, h4, h5, h6, input, textarea, select, p, dl, d
 	padding: 0;
 }
 body {
-	font: 12px/1.5 'Microsoft YaHei','宋体', Tahoma, Arial, sans-serif;
+	font: 12px/1.5 '宋体','Microsoft YaHei', Tahoma, Arial, sans-serif;
 	// color: #555;
 	// background-color: #F7F7F7;
 }
@@ -52,7 +52,7 @@ ul,li{
 strong {
 	font-weight: normal;
 }
-.clearfix:after {
+.clearfix:after,.clearfix:before {
 	content: "";
 	display: block;
 	visibility: hidden;
@@ -75,7 +75,7 @@ ul, ol {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
-	font-family: 'Microsoft YaHei';
+	// font-family: 'Microsoft YaHei';
 }
 img {
 	border: none;
