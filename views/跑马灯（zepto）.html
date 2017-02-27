@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        .box{
+            height: 500px;
+            width: 500px;
+            margin:0 auto;
+        }
+        ul {
+            position: relative;
+            top: 50%;
+            margin-top:-65px;
+            left:50%;
+            margin-left:-150px;
+            list-style: none;
+            width: 200px;
+            height: 130px;
+            /*transition: all 1s;动画由鼠标来不停给参数执行*/
+            perspective: 10000px;
+            transform-style: preserve-3d;
+            transform: rotatex(-20deg) rotatey(0deg);
+        }
+
+        ul li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*transform:rotatey(0deg) translatez(0px);*/
+        }
+
+        /*ul:hover {*/
+            /*transform: rotatex(-20deg) rotatey(360deg);*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li><img src="../public/images/1.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/2.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/3.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/4.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/5.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/6.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/7.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/8.png" alt="" width="200" height='130'></li>
+    </ul>
+</div>
+<script src='../scripts/zepto.js'></script>
+<script src='../scripts/event.js'></script>
+<script>
+    $(function () {
+        var li = $("li");
+        var ul=$('ul').eq(0);
+        var box=$('.box');
+        li.each(function (i, el) {
+            $(this).css({"transform": 'rotatey(' + i * 45 + 'deg) translatez(241px)'})
+        });
+        console.dir(box);
+        var startX,startY,x, y, centerX = 0,centerY = 0,rotateY = 0;
+        box.on("touchstart mousedown",function (event) {
+            console.log(event);
+            event = event || window.event;
+            event.stopPropagation();//阻止冒泡
+            event.preventDefault();//阻止默认行为
+            startX=event.pageX||event.touches[0].pageX;
+            startY=event.pageY||event.touches[0].pageY;
+            $(document).on("touchmove mousemove",function(event) {
+                event = event || window.event;
+                x=(event.pageX||event.touches[0].pageX)-startX;
+                y=(event.pageY||event.touches[0].pageY)-startY;
+                ul.css({"transform":"rotatex("+(-60-y-centerY)/3+"deg) rotatey("+(x+centerX)/3+"deg) "})
+            });
+            $(document).on("touchend mouseup",function(event) {
+                centerX+=x;
+                centerY+=y;
+                $(document).off("touchmove mousemove");
+                $(document).off("touchend mouseup");
+//                ul.off("mousedown");
+            })
+        })
+    })
+</script>
+</body>
+</html>
