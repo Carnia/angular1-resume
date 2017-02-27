@@ -42,19 +42,22 @@ angular.module('Ctrl', [])
     }])
     .controller('h5c3Ctrl', ['$scope', '$http', '$rootScope', '$timeout', function($scope, $http, $rootScope, $timeout) {
         $rootScope.current = 1;
+        $rootScope.loaded = false;
         $timeout(function() {
             $rootScope.loaded = true;
-        }, 1000)
+        }, 500)
     }])
     .controller('popularCtrl', ['$scope', '$http', '$rootScope', '$timeout', function($scope, $http, $rootScope, $timeout) {
         $rootScope.current = 2;
+        $rootScope.loaded = false;
         $timeout(function() {
             $rootScope.loaded = true;
-        }, 1000)
+        }, 500)
     }])
     .controller('aboutCtrl', ['$scope', '$http', '$rootScope', '$timeout', function($scope, $http, $rootScope, $timeout) {
         $rootScope.current = 3;
+        $rootScope.loaded = false;
         $timeout(function() {
             $rootScope.loaded = true;
-        }, 1000)
+        }, 500)
     }])

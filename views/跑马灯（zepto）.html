@@ -15,10 +15,10 @@
             top: 50%;
             margin-top:-65px;
             left:50%;
-            margin-left:-150px;
+            margin-left:-100px;
             list-style: none;
-            width: 200px;
-            height: 130px;
+            width: 100px;
+            height: 65px;
             /*transition: all 1s;动画由鼠标来不停给参数执行*/
             perspective: 10000px;
             transform-style: preserve-3d;
@@ -40,14 +40,14 @@
 <body>
 <div class="box">
     <ul>
-        <li><img src="../public/images/1.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/2.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/3.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/4.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/5.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/6.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/7.png" alt="" width="200" height='130'></li>
-        <li><img src="../public/images/8.png" alt="" width="200" height='130'></li>
+        <li><img src="../public/images/1.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/2.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/3.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/4.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/5.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/6.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/7.png" alt="" width="100" height='65'></li>
+        <li><img src="../public/images/8.png" alt="" width="100" height='65'></li>
     </ul>
 </div>
 <script src='../scripts/zepto.js'></script>
@@ -58,7 +58,7 @@
         var ul=$('ul').eq(0);
         var box=$('.box');
         li.each(function (i, el) {
-            $(this).css({"transform": 'rotatey(' + i * 45 + 'deg) translatez(241px)'})
+            $(this).css({"transform": 'rotatey(' + i * 45 + 'deg) translatez(120px)'})
         });
         console.dir(box);
         var startX,startY,x, y, centerX = 0,centerY = 0,rotateY = 0;
